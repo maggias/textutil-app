@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
+import {GoogleAnalytics} from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,6 +50,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-TFB9JQM145" />
       </body>
     </html>
   );
