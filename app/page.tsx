@@ -7,7 +7,7 @@ export default function Home() {
   const categories = getAllCategories()
 
   return (
-    <div className="container py-10">
+    <div className="container mx-auto px-2 sm:px-4 lg:px-4 py-10">
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold tracking-tight">TextUtil.com</h1>
         <p className="text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
