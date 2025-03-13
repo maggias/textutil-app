@@ -79,13 +79,17 @@ export default function UtilityPage({ params }: UtilityPageProps) {
 
   return (
     <UtilityLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{utility.name}</h1>
-          <p className="text-muted-foreground mt-2">{utility.description}</p>
+      <div className="p-6">
+        <div className="grid gap-6">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold">{utility.name}</h1>
+              <p className="text-muted-foreground mt-2">{utility.description}</p>
+            </div>
+          </div>
+          
+          {UtilityComponent}
         </div>
-        
-        {UtilityComponent}
       </div>
     </UtilityLayout>
   )

@@ -85,126 +85,137 @@ export default function NumberConversionPage() {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Number Conversion</CardTitle>
-          <CardDescription>
-            Convert numbers between decimal, binary, octal, and hexadecimal formats
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Tabs defaultValue="decimal" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="decimal">Decimal</TabsTrigger>
-              <TabsTrigger value="binary">Binary</TabsTrigger>
-              <TabsTrigger value="octal">Octal</TabsTrigger>
-              <TabsTrigger value="hex">Hexadecimal</TabsTrigger>
-            </TabsList>
-            <TabsContent value="decimal">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="decimal">Decimal (Base 10)</Label>
-                  <Input
-                    id="decimal"
-                    type="number"
-                    value={decimal}
-                    onChange={(e) => handleDecimalChange(e.target.value)}
-                    placeholder="Enter decimal number"
-                  />
+    <div className="p-6">
+      <div className="grid gap-6">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold">Number Conversion</h1>
+            <p className="text-muted-foreground mt-2">
+              Convert numbers between decimal, binary, octal, and hexadecimal formats
+            </p>
+          </div>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Number Conversion</CardTitle>
+            <CardDescription>
+              Convert numbers between decimal, binary, octal, and hexadecimal formats
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Tabs defaultValue="decimal" className="w-full">
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger value="decimal">Decimal</TabsTrigger>
+                <TabsTrigger value="binary">Binary</TabsTrigger>
+                <TabsTrigger value="octal">Octal</TabsTrigger>
+                <TabsTrigger value="hex">Hexadecimal</TabsTrigger>
+              </TabsList>
+              <TabsContent value="decimal">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="decimal">Decimal (Base 10)</Label>
+                    <Input
+                      id="decimal"
+                      type="number"
+                      value={decimal}
+                      onChange={(e) => handleDecimalChange(e.target.value)}
+                      placeholder="Enter decimal number"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Binary (Base 2)</Label>
+                    <Input value={binary} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Octal (Base 8)</Label>
+                    <Input value={octal} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Hexadecimal (Base 16)</Label>
+                    <Input value={hex} readOnly />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label>Binary (Base 2)</Label>
-                  <Input value={binary} readOnly />
+              </TabsContent>
+              <TabsContent value="binary">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="binary">Binary (Base 2)</Label>
+                    <Input
+                      id="binary"
+                      value={binary}
+                      onChange={(e) => handleBinaryChange(e.target.value)}
+                      placeholder="Enter binary number"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Decimal (Base 10)</Label>
+                    <Input value={decimal} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Octal (Base 8)</Label>
+                    <Input value={octal} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Hexadecimal (Base 16)</Label>
+                    <Input value={hex} readOnly />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label>Octal (Base 8)</Label>
-                  <Input value={octal} readOnly />
+              </TabsContent>
+              <TabsContent value="octal">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="octal">Octal (Base 8)</Label>
+                    <Input
+                      id="octal"
+                      value={octal}
+                      onChange={(e) => handleOctalChange(e.target.value)}
+                      placeholder="Enter octal number"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Decimal (Base 10)</Label>
+                    <Input value={decimal} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Binary (Base 2)</Label>
+                    <Input value={binary} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Hexadecimal (Base 16)</Label>
+                    <Input value={hex} readOnly />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label>Hexadecimal (Base 16)</Label>
-                  <Input value={hex} readOnly />
+              </TabsContent>
+              <TabsContent value="hex">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="hex">Hexadecimal (Base 16)</Label>
+                    <Input
+                      id="hex"
+                      value={hex}
+                      onChange={(e) => handleHexChange(e.target.value)}
+                      placeholder="Enter hexadecimal number"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Decimal (Base 10)</Label>
+                    <Input value={decimal} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Binary (Base 2)</Label>
+                    <Input value={binary} readOnly />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Octal (Base 8)</Label>
+                    <Input value={octal} readOnly />
+                  </div>
                 </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="binary">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="binary">Binary (Base 2)</Label>
-                  <Input
-                    id="binary"
-                    value={binary}
-                    onChange={(e) => handleBinaryChange(e.target.value)}
-                    placeholder="Enter binary number"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>Decimal (Base 10)</Label>
-                  <Input value={decimal} readOnly />
-                </div>
-                <div className="space-y-2">
-                  <Label>Octal (Base 8)</Label>
-                  <Input value={octal} readOnly />
-                </div>
-                <div className="space-y-2">
-                  <Label>Hexadecimal (Base 16)</Label>
-                  <Input value={hex} readOnly />
-                </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="octal">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="octal">Octal (Base 8)</Label>
-                  <Input
-                    id="octal"
-                    value={octal}
-                    onChange={(e) => handleOctalChange(e.target.value)}
-                    placeholder="Enter octal number"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>Decimal (Base 10)</Label>
-                  <Input value={decimal} readOnly />
-                </div>
-                <div className="space-y-2">
-                  <Label>Binary (Base 2)</Label>
-                  <Input value={binary} readOnly />
-                </div>
-                <div className="space-y-2">
-                  <Label>Hexadecimal (Base 16)</Label>
-                  <Input value={hex} readOnly />
-                </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="hex">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="hex">Hexadecimal (Base 16)</Label>
-                  <Input
-                    id="hex"
-                    value={hex}
-                    onChange={(e) => handleHexChange(e.target.value)}
-                    placeholder="Enter hexadecimal number"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>Decimal (Base 10)</Label>
-                  <Input value={decimal} readOnly />
-                </div>
-                <div className="space-y-2">
-                  <Label>Binary (Base 2)</Label>
-                  <Input value={binary} readOnly />
-                </div>
-                <div className="space-y-2">
-                  <Label>Octal (Base 8)</Label>
-                  <Input value={octal} readOnly />
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-      </Card>
+              </TabsContent>
+            </Tabs>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 } 
