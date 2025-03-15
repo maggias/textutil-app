@@ -1,136 +1,45 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Copy, RefreshCw, ArrowRight } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
-import { UtilityContainer } from "@/components/utility-container";
+import { UtilityContainer } from '@/components/utility-container'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Label } from '@/components/ui/label'
 
 export default function UrlEncode() {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const { toast } = useToast();
-
-  const encode = () => {
+  const processUrl = (input: string): string => {
+    const mode = document.querySelector<HTMLInputElement>('input[name="url-mode"]:checked')?.value || 'encode';
+    
     try {
-      const encoded = encodeURIComponent(input);
-      setOutput(encoded);
+      if (mode === 'encode') {
+        return encodeURIComponent(input);
+      } else {
+        return decodeURIComponent(input);
+      }
     } catch (error) {
-      toast({
-        title: "Encoding Error",
-        description: "Failed to encode the text. Please check your input.",
-        variant: "destructive",
-      });
+      throw new Error(`Failed to ${mode} the URL. Please check that your input is valid ${mode === 'decode' ? 'URL-encoded text' : 'text'}.`);
     }
-  };
-
-  const decode = () => {
-    try {
-      const decoded = decodeURIComponent(input);
-      setOutput(decoded);
-    } catch (error) {
-      toast({
-        title: "Decoding Error",
-        description:
-          "Failed to decode the text. Please check if the input is valid URL-encoded text.",
-        variant: "destructive",
-      });
-    }
-  };
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    toast({
-      title: "Copied to clipboard",
-      description: "The text has been copied to your clipboard.",
-    });
-  };
-
-  const clearTexts = () => {
-    setInput("");
-    setOutput("");
   };
 
   return (
-    <>
-      <Card className="w-full">
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <div>
-              <CardTitle>Input Text</CardTitle>
-              <CardDescription>
-                Enter the text you want to encode or decode
-              </CardDescription>
-            </div>
-            <Button variant="outline" onClick={clearTexts}>
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Clear
-            </Button>
+    <UtilityContainer
+      title="URL Encode/Decode"
+      description="Encode text for URLs or decode URL-encoded text"
+      processFunction={processUrl}
+      downloadFileName="url-result.txt"
+      inputPlaceholder="Enter text to encode or URL-encoded text to decode..."
+    >
+      <div className="mb-4">
+        <h3 className="text-sm font-medium mb-3">Mode</h3>
+        <RadioGroup defaultValue="encode" name="url-mode" className="flex space-x-4">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="encode" id="encode" />
+            <Label htmlFor="encode">Encode</Label>
           </div>
-        </CardHeader>
-        <CardContent>
-          <div className="relative">
-            <Textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter text to encode or decode..."
-              className="min-h-[200px] font-mono"
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-2 right-2"
-              onClick={() => copyToClipboard(input)}
-            >
-              <Copy className="h-4 w-4" />
-            </Button>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="decode" id="decode" />
+            <Label htmlFor="decode">Decode</Label>
           </div>
-        </CardContent>
-      </Card>
-
-      <div className="flex justify-center gap-4">
-        <Button onClick={encode} className="w-32">
-          Encode
-        </Button>
-        <Button onClick={decode} className="w-32">
-          Decode
-        </Button>
+        </RadioGroup>
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Output</CardTitle>
-          <CardDescription>
-            Result of the encoding or decoding operation
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="relative">
-            <Textarea
-              value={output}
-              readOnly
-              className="min-h-[200px] font-mono bg-muted"
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-2 right-2"
-              onClick={() => copyToClipboard(output)}
-            >
-              <Copy className="h-4 w-4" />
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </>
+    </UtilityContainer>
   );
 }
