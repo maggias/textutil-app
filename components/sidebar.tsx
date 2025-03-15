@@ -66,34 +66,6 @@ const utilityIcons: Record<string, React.ComponentType<{ className?: string }>> 
   'text-extractor': FileSearch,
 }
 
-// Map utility IDs to their icons
-const utilityIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  'case-converter': TypeIcon,
-  'sort-text': ArrowUpDown,
-  'remove-duplicates': Trash2,
-  'text-diff': GitCompare,
-  'base64': Code2,
-  'url-encode': FileCode,
-  'html-encode': FileJson,
-  'jwt-decoder': FileText,
-  'json-formatter': FileJson,
-  'xml-formatter': FileText,
-  'sql-formatter': FileDigit,
-  'css-formatter': Layers,
-  'date-conversion': Calendar,
-  'number-conversion': Hash,
-  'csv-to-json': Table,
-  'json-to-yaml': File,
-  'uuid-generator': FileKey,
-  'password-generator': KeyRound,
-  'lorem-ipsum': Text,
-  'hash-generator': FileKey,
-  'pdf-conversion': FileIcon,
-  'markdown-preview': Eye,
-  'word-counter': AlignJustify,
-  'text-extractor': FileSearch,
-}
-
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
