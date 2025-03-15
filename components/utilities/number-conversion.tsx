@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UtilityContainer } from '@/components/utility-container'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Label } from '@/components/ui/label'
@@ -11,39 +11,49 @@ export default function NumberConversion() {
   const [inputBase, setInputBase] = useState<NumberBase>('decimal');
   const [outputBase, setOutputBase] = useState<NumberBase>('binary');
 
-  const isValidNumber = (value: string, base: NumberBase): boolean => {
-    if (value.trim() === '') return true;
-    const patterns = {
-      decimal: /^-?\d+$/,
-      binary: /^[01]+$/,
-      octal: /^[0-7]+$/,
-      hex: /^[0-9A-Fa-f]+$/
-    };
-    return patterns[base].test(value.trim());
+  const getValidChars = (base: NumberBase): RegExp => {
+    switch (base) {
+      case 'decimal':
+        return /^-?\d*$/;
+      case 'binary':
+        return /^[01]*$/;
+      case 'octal':
+        return /^[0-7]*$/;
+      case 'hex':
+        return /^[0-9A-Fa-f]*$/;
+    }
   };
+
+  // Monitor input changes and validate in real-time
+  useEffect(() => {
+    const textarea = document.querySelector('textarea');
+    if (!textarea) return;
+
+    const handleInput = (e: Event) => {
+      const input = (e.target as HTMLTextAreaElement);
+      const value = input.value;
+      const pattern = getValidChars(inputBase);
+
+      // If the input doesn't match the pattern, prevent the change
+      if (!pattern.test(value)) {
+        // Find the last valid value by testing each character
+        let validValue = '';
+        for (let i = 0; i < value.length; i++) {
+          const testValue = i === 0 && value[i] === '-' ? '-' : validValue + value[i];
+          if (pattern.test(testValue)) {
+            validValue = testValue;
+          }
+        }
+        input.value = validValue;
+      }
+    };
+
+    textarea.addEventListener('input', handleInput);
+    return () => textarea.removeEventListener('input', handleInput);
+  }, [inputBase]);
 
   const convertNumber = (input: string): string => {
     if (input.trim() === '') return '';
-
-    // Validate input format
-    if (!isValidNumber(input, inputBase)) {
-      let allowedChars;
-      switch (inputBase) {
-        case 'decimal':
-          allowedChars = "0-9 and - (at start)";
-          break;
-        case 'binary':
-          allowedChars = "0 and 1";
-          break;
-        case 'octal':
-          allowedChars = "0-7";
-          break;
-        case 'hex':
-          allowedChars = "0-9 and A-F";
-          break;
-      }
-      throw new Error(`Invalid ${inputBase} number. Only ${allowedChars} are allowed.`);
-    }
 
     try {
       // Parse the input number based on its base
