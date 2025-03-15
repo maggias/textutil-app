@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   description: 'A collection of text utilities for developers including text case conversion, sorting, duplicate removal, encoding/decoding, JSON formatting, and more.',
   keywords: 'text utilities, developer tools, text case converter, sort text, remove duplicates, encode decode, JSON formatter, date conversion, PDF conversion',
   authors: [{ name: 'TextUtil Team' }],
+  icons: {
+    icon: [
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      }
+    ],
+  },
   openGraph: {
     title: 'TextUtil.com - Developer Text Utilities',
     description: 'A collection of text utilities for developers including text case conversion, sorting, duplicate removal, encoding/decoding, JSON formatting, and more.',
