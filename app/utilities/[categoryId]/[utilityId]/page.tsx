@@ -12,6 +12,7 @@ import JsonFormatter from '@/components/utilities/json-formatter'
 import DateConversion from '@/components/utilities/date-conversion'
 import PdfConversion from '@/components/utilities/pdf-conversion'
 import UrlEncode from "@/components/utilities/url-encode";
+import NumberConversion from '@/components/utilities/number-conversion'
 
 interface UtilityPageProps {
   params: {
@@ -70,6 +71,7 @@ export default function UtilityPage({ params }: UtilityPageProps) {
     'date-conversion': <DateConversion />,
     'pdf-conversion': <PdfConversion />,
     'url-encode': <UrlEncode />,
+    'number-conversion': <NumberConversion />,
     // Add more utility components as they are created
   }
 
