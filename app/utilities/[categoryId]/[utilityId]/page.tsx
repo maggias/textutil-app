@@ -11,6 +11,7 @@ import Base64Utility from '@/components/utilities/base64'
 import JsonFormatter from '@/components/utilities/json-formatter'
 import DateConversion from '@/components/utilities/date-conversion'
 import PdfConversion from '@/components/utilities/pdf-conversion'
+import UrlEncode from "@/components/utilities/url-encode";
 
 interface UtilityPageProps {
   params: {
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: UtilityPageProps): Promise<Me
   return {
     title: `${utility.name} - TextUtil.com`,
     description: utility.description,
+    keywords: utility.keywords.join(', '),
   }
 }
 
@@ -67,6 +69,7 @@ export default function UtilityPage({ params }: UtilityPageProps) {
     'json-formatter': <JsonFormatter />,
     'date-conversion': <DateConversion />,
     'pdf-conversion': <PdfConversion />,
+    'url-encode': <UrlEncode />,
     // Add more utility components as they are created
   }
 
@@ -87,7 +90,7 @@ export default function UtilityPage({ params }: UtilityPageProps) {
               <p className="text-muted-foreground mt-2">{utility.description}</p>
             </div>
           </div>
-          
+
           {UtilityComponent}
         </div>
       </div>

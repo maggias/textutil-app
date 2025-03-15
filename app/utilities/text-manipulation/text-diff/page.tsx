@@ -91,7 +91,6 @@ export default function TextDiff() {
             Clear
           </Button>
         </div>
-
         <div className="grid md:grid-cols-2 gap-4">
           <Card>
             <CardHeader>
