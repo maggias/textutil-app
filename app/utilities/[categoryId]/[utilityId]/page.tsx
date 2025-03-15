@@ -13,6 +13,7 @@ import DateConversion from '@/components/utilities/date-conversion'
 import PdfConversion from '@/components/utilities/pdf-conversion'
 import UrlEncode from "@/components/utilities/url-encode";
 import NumberConversion from '@/components/utilities/number-conversion'
+import HtmlEncode from '@/components/utilities/html-encode'
 
 interface UtilityPageProps {
   params: {
@@ -72,6 +73,7 @@ export default function UtilityPage({ params }: UtilityPageProps) {
     'pdf-conversion': <PdfConversion />,
     'url-encode': <UrlEncode />,
     'number-conversion': <NumberConversion />,
+    'html-encode': <HtmlEncode />,
     // Add more utility components as they are created
   }
 
