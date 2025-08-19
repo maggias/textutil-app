@@ -26,6 +26,7 @@ interface UtilityContainerProps {
   downloadFileName?: string;
   tabs?: { id: string; label: string; content: React.ReactNode }[];
   showHeader?: boolean;
+  footerText?: React.ReactNode;
 }
 
 export function UtilityContainer({
@@ -38,6 +39,7 @@ export function UtilityContainer({
   downloadFileName = "output.txt",
   tabs,
   showHeader = false,
+  footerText,
 }: UtilityContainerProps) {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -218,6 +220,11 @@ export function UtilityContainer({
           {isProcessing ? "Processing..." : "Process"}
         </Button>
       </CardFooter>
+      {footerText &&
+          <CardFooter>
+        <div className="mt-2 text-sm text-muted-foreground">{footerText}</div>
+      </CardFooter>
+      }
     </Card>
   );
 }
