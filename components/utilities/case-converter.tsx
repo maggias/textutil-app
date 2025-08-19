@@ -48,7 +48,6 @@ const CaseConverterFooterText: React.FC = () => (
           <li>
             <h4 className="font-medium">Capitalized Case</h4>
             <p className="text-sm text-gray-500">Capitalizes the first letter of each word. It is the same as Title Case. For example, "hello world" becomes "Hello World".</p>
-          </li>
           <li>
             <h4 className="font-medium">aLtErNaTiNg cAsE</h4>
             <p className="text-sm text-gray-500">Alternates between lowercase and uppercase letters. For example, "hello world" becomes "hElLo wOrLd".</p>
