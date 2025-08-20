@@ -204,6 +204,13 @@ export const categories: Category[] = [
     description: "Tools for working with documents",
     utilities: [
       {
+        id: "word-counter",
+        name: "Word Counter",
+        description: "Count words, characters, and paragraphs in text",
+        path: "/utilities/document/word-counter",
+        keywords: ["word", "count", "characters", "paragraphs"],
+      },
+      {
         id: "pdf-conversion",
         name: "PDF Conversion",
         description: "Convert between PDF and other formats",
@@ -216,13 +223,6 @@ export const categories: Category[] = [
         description: "Preview Markdown text as HTML",
         path: "/utilities/document/markdown-preview",
         keywords: ["markdown", "preview", "html"],
-      },
-      {
-        id: "word-counter",
-        name: "Word Counter",
-        description: "Count words, characters, and paragraphs in text",
-        path: "/utilities/document/word-counter",
-        keywords: ["word", "count", "characters", "paragraphs"],
       },
       {
         id: "text-extractor",
