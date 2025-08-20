@@ -23,7 +23,7 @@ export default function WordCounter() {
     const charCount = text.length;
     const charCountNoSpaces = text.replace(/\s/g, "").length;
     const lineCount = text.split("\n").length;
-    const sentenceCount = text.split(/[.!?]+/).filter(Boolean).length;
+    const sentenceCount = text.match(/[.!?]+(?=\s|$)/g)?.length || 0;
     const paragraphCount = text.split("\n\n").filter(Boolean).length;
     const wordFrequency: { [key: string]: number } = {};
     words.forEach((word) => {
