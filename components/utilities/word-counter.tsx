@@ -13,7 +13,20 @@ import {
 } from "@/components/ui/table";
 export default function WordCounter() {
   const [text, setText] = useState("");
-  const [analysis, setAnalysis] = useState<any>(null);
+
+interface TextAnalysis {
+  wordCount: number;
+  charCount: number;
+  charCountNoSpaces: number;
+  lineCount: number;
+  sentenceCount: number;
+  paragraphCount: number;
+  wordFrequency: [string, number][];
+}
+
+export default function WordCounter() {
+  const [text, setText] = useState("");
+  const [analysis, setAnalysis] = useState<TextAnalysis | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const analyzeText = () => {
