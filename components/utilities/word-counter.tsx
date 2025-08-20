@@ -11,8 +11,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-export default function WordCounter() {
-  const [text, setText] = useState("");
 
 interface TextAnalysis {
   wordCount: number;
@@ -122,9 +120,7 @@ export default function WordCounter() {
               <CardTitle>Paragraph Count</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold">
-                {analysis.paragraphCount}
-              </p>
+              <p className="text-2xl font-bold">{analysis.paragraphCount}</p>
             </CardContent>
           </Card>
         </div>
