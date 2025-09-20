@@ -8,7 +8,9 @@ import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { copyToClipboard } from "@/lib/utils";
 import { marked } from "marked";
-import * as DOMPurify from 'dompurify';
+import dynamic from 'next/dynamic';
+
+const SanitizedHtmlDisplay = dynamic(() => import('@/components/sanitized-html-display'), { ssr: false });
 
 export default function MarkdownPreview() {
   const [input, setInput] = useState("");
@@ -71,10 +73,7 @@ export default function MarkdownPreview() {
             className="min-h-[300px]"
           />
           <div className="relative">
-            <div
-              className="min-h-[300px] p-4 border rounded-md overflow-auto"
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlOutput) }}
-            />
+            <SanitizedHtmlDisplay html={htmlOutput} />
             <Button
               variant="outline"
               size="icon"
