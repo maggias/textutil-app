@@ -22,7 +22,7 @@ import { Label } from "@/components/ui/label";
 const luhnCheck = (val: string) => {
   let sum = 0;
   for (let i = 0; i < val.length; i++) {
-    let intVal = parseInt(val.substr(i, 1));
+    let intVal = parseInt(val.charAt(i));
     if (i % 2 === 0) {
       intVal *= 2;
       if (intVal > 9) {
