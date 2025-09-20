@@ -48,6 +48,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
+    "dompurify": "^3.2.7",
     "embla-carousel-react": "^8.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.1.0",
@@ -59,6 +60,7 @@
     "md5": "^2.3.0",
     "next": "^13.5.1",
     "next-themes": "^0.3.0",
+    "papaparse": "^5.5.3",
     "pdf-parse": "^1.1.1",
     "postcss": "^8.4.35",
     "qrcode.react": "^4.2.0",
@@ -80,6 +82,7 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/md5": "^2.3.5",
+    "@types/papaparse": "^5.3.16",
     "prettier": "3.5.3"
   }
 }

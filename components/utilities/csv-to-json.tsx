@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { copyToClipboard } from "@/lib/utils";
+import Papa from "papaparse";
 
 export default function CsvToJson() {
   const [input, setInput] = useState("");
@@ -20,22 +21,12 @@ export default function CsvToJson() {
       return;
     }
     try {
-      const lines = input.split(/\r?\n/);
-      const headers = lines[0].split(",");
-      const result = [];
-
-      for (let i = 1; i < lines.length; i++) {
-        const obj: { [key: string]: string } = {};
-        const currentline = lines[i].split(",");
-
-        if (currentline.length === headers.length) {
-          for (let j = 0; j < headers.length; j++) {
-            obj[headers[j]] = currentline[j];
-          }
-          result.push(obj);
-        }
+      const result = Papa.parse(input, { header: true, dynamicTyping: true });
+      if (result.errors.length) {
+        setJsonOutput(`Error: ${result.errors[0].message}`);
+        return;
       }
-      setJsonOutput(JSON.stringify(result, null, 2));
+      setJsonOutput(JSON.stringify(result.data, null, 2));
     } catch (error: any) {
       setJsonOutput(`Error: ${error.message}`);
     }

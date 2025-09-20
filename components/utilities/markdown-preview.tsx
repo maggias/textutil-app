@@ -8,6 +8,7 @@ import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { copyToClipboard } from "@/lib/utils";
 import { marked } from "marked";
+import DOMPurify from 'dompurify';
 
 export default function MarkdownPreview() {
   const [input, setInput] = useState("");
@@ -22,7 +23,7 @@ export default function MarkdownPreview() {
     }
     try {
       const html = await marked.parse(input);
-      setHtmlOutput(html);
+      setHtmlOutput(DOMPurify.sanitize(html));
     } catch (error: any) {
       setHtmlOutput(`Error: ${error.message}`);
     }

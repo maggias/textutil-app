@@ -36,9 +36,10 @@ export default function XmlFormatter() {
       // Add indentation for pretty printing
       const PADDING = '  '; // amount of indent padding
       const reg = /(>)(<)(\/*)/g;
-      let formatedXml = formatted.replace(reg, '$1\r\n$2$3');
+      let formattedXml = formatted.replace(reg, `$1
+$2$3`);
       let pad = 0;
-      formatedXml = formatedXml.split('\r\n').map((node: string) => {
+      formattedXml = formattedXml.split('\r\n').map((node: string) => {
           let indent = 0;
           if (node.match( /<\/\w/ )) { // closing tag
               pad -= 1;
@@ -50,7 +51,7 @@ export default function XmlFormatter() {
           return padding + node;
       }).join('\r\n');
 
-      setFormattedXml(formatedXml);
+      setFormattedXml(formattedXml);
     } catch (error: any) {
       setFormattedXml(`Error: ${error.message}`);
     }
