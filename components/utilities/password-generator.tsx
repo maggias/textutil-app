@@ -22,6 +22,11 @@ import { copyToClipboard } from "@/lib/utils";
 import { words } from "@/lib/words";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+const similarChars = "il1Lo0O";
+const ambiguousChars = "{}[]()/\\'\"`~,;.<>";
+const similarCharsRegex = new RegExp(`[${similarChars}]`, 'g');
+const ambiguousCharsRegex = new RegExp(`[${ambiguousChars}]`, 'g');
+
 const PasswordStrength = ({ strength }: { strength: number }) => {
   const strengthLevels = [
     { label: "Very Weak", color: "bg-red-500" },
@@ -45,7 +50,6 @@ const PasswordStrength = ({ strength }: { strength: number }) => {
     </div>
   );
 };
-
 
 export default function PasswordGenerator() {
   const [password, setPassword] = useState("");
@@ -95,17 +99,14 @@ export default function PasswordGenerator() {
       let numberChars = "0123456789";
       let symbolChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-      const similarChars = "il1Lo0O";
-      const ambiguousChars = "{}[]()/\\'\"`~,;.<>";
-
       if (excludeSimilar) {
-        lowercaseChars = lowercaseChars.replace(new RegExp(`[${similarChars}]`, 'g'), '');
-        uppercaseChars = uppercaseChars.replace(new RegExp(`[${similarChars}]`, 'g'), '');
-        numberChars = numberChars.replace(new RegExp(`[${similarChars}]`, 'g'), '');
+        lowercaseChars = lowercaseChars.replace(similarCharsRegex, '');
+        uppercaseChars = uppercaseChars.replace(similarCharsRegex, '');
+        numberChars = numberChars.replace(similarCharsRegex, '');
       }
 
       if (excludeAmbiguous) {
-        symbolChars = symbolChars.replace(new RegExp(`[${ambiguousChars}]`, 'g'), '');
+        symbolChars = symbolChars.replace(ambiguousCharsRegex, '');
       }
 
       charPool = lowercaseChars;
