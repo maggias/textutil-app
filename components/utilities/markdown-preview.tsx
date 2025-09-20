@@ -23,7 +23,7 @@ export default function MarkdownPreview() {
     }
     try {
       const html = await marked.parse(input);
-      setHtmlOutput(DOMPurify.sanitize(html));
+      setHtmlOutput(typeof window !== 'undefined' && window.DOMPurify ? window.DOMPurify.sanitize(html) : html);
     } catch (error: any) {
       setHtmlOutput(`Error: ${error.message}`);
     }
