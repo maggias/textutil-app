@@ -73,7 +73,7 @@ export default function MarkdownPreview() {
           <div className="relative">
             <div
               className="min-h-[300px] p-4 border rounded-md overflow-auto"
-              dangerouslySetInnerHTML={{ __html: htmlOutput }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlOutput) }}
             />
             <Button
               variant="outline"
