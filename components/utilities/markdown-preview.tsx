@@ -8,7 +8,7 @@ import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { copyToClipboard } from "@/lib/utils";
 import { marked } from "marked";
-import DOMPurify from 'dompurify';
+import * as DOMPurify from 'dompurify';
 
 export default function MarkdownPreview() {
   const [input, setInput] = useState("");
