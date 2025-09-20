@@ -9,6 +9,7 @@ import {GoogleAnalytics} from "@next/third-parties/google";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://textutil.com'),
   title: 'TextUtil.com - Developer Text Utilities',
   description: 'A collection of text utilities for developers including text case conversion, sorting, duplicate removal, encoding/decoding, JSON formatting, and more.',
   keywords: 'text utilities, developer tools, text case converter, sort text, remove duplicates, encode decode, JSON formatter, date conversion, PDF conversion',
