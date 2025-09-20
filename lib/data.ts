@@ -195,6 +195,27 @@ export const categories: Category[] = [
         path: "/utilities/generators/hash-generator",
         keywords: ["hash", "md5", "sha-1", "sha-256"],
       },
+      {
+        id: "credit-card-generator",
+        name: "Credit Card Generator",
+        description: "Generate valid (but fake) credit card numbers for testing",
+        path: "/utilities/generators/credit-card-generator",
+        keywords: ["credit card", "visa", "mastercard", "amex"],
+      },
+      {
+        id: "data-set-generator",
+        name: "Data Set Generator",
+        description: "Generate structured data in formats like JSON, CSV, or SQL",
+        path: "/utilities/generators/data-set-generator",
+        keywords: ["data", "json", "csv", "sql"],
+      },
+      {
+        id: "qr-code-generator",
+        name: "QR Code Generator",
+        description: "Generate a QR code from a URL or text",
+        path: "/utilities/generators/qr-code-generator",
+        keywords: ["qr", "code", "generator"],
+      },
     ],
   },
   {
