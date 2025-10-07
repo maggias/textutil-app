@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://textutil.com
+Host: https://www.textutil.com
 
 # Sitemaps
-Sitemap: https://textutil.com/sitemap.xml
+Sitemap: https://www.textutil.com/sitemap.xml
