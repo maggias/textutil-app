@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 export default {
-  siteUrl: process.env.SITE_URL || 'https://textutil.com',
+  siteUrl: process.env.SITE_URL || 'https://www.textutil.com',
   generateRobotsTxt: true,
   outDir: './public',
   exclude: ['/search'], // Exclude the search page if it's not meant to be indexed
