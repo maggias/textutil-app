@@ -7,3 +7,4 @@ Host: https://www.textutil.com
 
 # Sitemaps
 Sitemap: https://www.textutil.com/sitemap.xml
+Sitemap: https://www.textutil.com/sitemap-0.xml
