@@ -2,6 +2,11 @@
 export default {
   siteUrl: process.env.SITE_URL || 'https://www.textutil.com',
   generateRobotsTxt: true,
+  robotsTxtOptions: {
+    additionalSitemaps: [
+      'https://www.textutil.com/sitemap-0.xml',
+    ],
+  },
   outDir: './public',
   exclude: ['/search'], // Exclude the search page if it's not meant to be indexed
   transform: async (config, path) => {
